@@ -82,11 +82,18 @@ impl Log for FrustyLogger {
             return;
         }
 
+        // let msg = format!(
+        //     "{} {} {} > {}",
+        //     emoji_level(record.level()),
+        //     colored_level(record.level()),
+        //     Paint::new(record.target()).bold(),
+        //     record.args()
+        // );
+
         let msg = format!(
-            "{} {} {} > {}",
-            emoji_level(record.level()),
-            colored_level(record.level()),
-            Paint::new(record.target()).bold(),
+            "{} {} > {}",
+            record.level(),
+            record.target(),
             record.args()
         );
         if let Some(isolate) = self.isolate {
