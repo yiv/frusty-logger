@@ -91,10 +91,11 @@ impl Log for FrustyLogger {
         // );
 
         let msg = format!(
-            "[{}] {}:{} > {}",
+            "[{}] {}:{} {} > {}",
             record.level(),
             record.target(),
             record.line().unwrap_or_default(),
+            chrono::Local::now(),
             record.args()
         );
         if let Some(isolate) = self.isolate {
